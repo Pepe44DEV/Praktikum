@@ -9,6 +9,7 @@ if(isset($_GET['close'])){
 
     $fp = fopen('list.txt', 'a+');
     fwrite($fp, $firstname);
+    fclose($fp);
 
 
 }
@@ -29,6 +30,12 @@ if(isset($_GET['delete'])) {
 </head>
 <body>
 
+<ul class="navbar">
+    <li id="active" class="entry"><a href="index.php">Projekt 1</a></li>
+    <li class="entry"><a href="">Projekt2</a></li>
+    <li class="entry"><a href="">Projekt3</a></li>
+    <li class="entry"><a href="">Projekt4</a></li>
+</ul>
 
 <h1 class="title">Projekt Manager</h1>
 <h3 class="info">Trage deinen Namen in die liste ein wenn du mitarbeiten möchtest</h3>
@@ -49,7 +56,7 @@ if(isset($_GET['delete'])) {
         }
         fclose($handle);
     } else {
-        // error opening the file.
+        echo "<script>console.log('File not found')</script>";
     }
 
     ?>
@@ -57,7 +64,7 @@ if(isset($_GET['delete'])) {
 </ol>
 
 <form class="formdelete" action="index.php" method="get">
-    <input class="delete" type="submit" name="delete" value="delete">
+    <!--<input class="delete" type="submit" name="delete" value="delete">-->
 </form>
 
 
