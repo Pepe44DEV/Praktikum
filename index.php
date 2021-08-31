@@ -4,12 +4,34 @@ error_reporting(0);
 
 
 
+
 if(isset($_GET['close'])){
     $firstname = $_GET["firstname"].PHP_EOL;
+    $linecount = 0;
 
-    $fp = fopen('list.txt', 'a+');
-    fwrite($fp, $firstname);
-    fclose($fp);
+    $file="list.txt";
+    $handle = fopen($file, "r");
+    if ($handle) {
+        while(!feof($handle)){
+            $line = fgets($handle);
+            $linecount++;
+        }
+        echo "<script>console.log($linecount)</script>";
+        fclose($handle);
+    }else{
+        //Error Logging
+    }
+
+
+   if ($linecount <= 10){
+       $fp = fopen('list.txt', 'a+');
+       fwrite($fp, $firstname);
+       fclose($fp);
+   }else{
+       echo "Die Liste ist voll!";
+   }
+
+
 
 
 }
