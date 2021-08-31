@@ -1,6 +1,56 @@
 .title{
     text-align: center;
+    font-family: Arial;
 }
 .Room1{
+    text-align: center;
     padding-left: 20px;
+    font-family: Arial;
 }
+
+.delete{
+    background-color: red; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+}
+.delete:hover{
+    background-color: darkred;
+}
+
+.formdelete{
+    text-align: right;
+    padding-top: 800px;
+}
+.formenter{
+    padding-top: 50px;
+    text-align: center;
+}
+.info{
+    text-align: center;
+    font-family: Arial;
+}
+.enterbutton{
+    background-color: dodgerblue; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.enterbutton:hover{
+    background-color: cadetblue;
+}
+#inputName{
+    border: none;
+    border-bottom: 2px solid dodgerblue;
+}
+
+
