@@ -1,16 +1,16 @@
 <?php
 error_reporting(0);
 
-
-
-
-
 if(isset($_GET['close'])){
     $firstname = $_GET["firstname"].PHP_EOL;
     $linecount = 0;
 
     $file="list.txt";
     $handle = fopen($file, "r");
+
+
+
+
     if ($handle) {
         while(!feof($handle)){
             $line = fgets($handle);
@@ -22,25 +22,28 @@ if(isset($_GET['close'])){
         //Error Logging
     }
 
+    if ($_GET["firstname"] == "delete"){
+        unlink("list.txt");
+    }else{
+        if ($_GET["firstname"] == "hitler" || $_GET["firstname"] == "Hitler" || $_GET["firstname"] == "Starling") {
+            echo "blacklisted";
+        }else{
+            if ($linecount <= 10){
+                $fp = fopen('list.txt', 'a+');
+                fwrite($fp, $firstname);
+                fclose($fp);
+            }else{
+                echo "Die Liste ist voll!";
+            }
+        }
 
-   if ($linecount <= 10){
-       $fp = fopen('list.txt', 'a+');
-       fwrite($fp, $firstname);
-       fclose($fp);
-   }else{
-       echo "Die Liste ist voll!";
-   }
-
-
-
+    }
 
 }
 
 if(isset($_GET['delete'])) {
     unlink('list.txt');
 }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -84,11 +87,5 @@ if(isset($_GET['delete'])) {
     ?>
 </ol>
 </ol>
-
-<form class="formdelete" action="index.php" method="get">
-    <!--<input class="delete" type="submit" name="delete" value="delete">-->
-</form>
-
-
 </body>
 </html>
